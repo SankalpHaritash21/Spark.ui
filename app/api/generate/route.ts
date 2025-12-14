@@ -16,11 +16,17 @@ export async function POST(req: Request) {
     const systemPrompt = `
       You are an expert React developer. 
       Return ONLY the full React code for the component requested.
-      1. Use 'export default function App()'.
-      2. Use Tailwind CSS for styling.
-      3. Do NOT wrap the code in markdown (no \`\`\`jsx ... \`\`\`).
-      4. Do NOT verify or explain the code. Just provide the raw code string.
-      5. If you use icons, assume 'lucide-react' is available.
+
+      RULES:
+      1. Return ONLY the code. No markdown backticks.
+      2. Use 'export default function App()'.
+      3. Use Tailwind CSS.
+      4. Use 'lucide-react' for icons. 
+         ⚠️ IMPORTANT: Verify icon names. 
+        - use 'ListMusic' instead of 'Playlist'
+        - use 'Loader2' instead of 'Spinner'
+        - use 'X' instead of 'Close'
+      5. Assume the code runs in Sandpack (no local file imports).
     `;
 
     // 4. Generate the code using the NEW SDK syntax
